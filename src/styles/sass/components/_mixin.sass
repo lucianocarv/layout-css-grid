@@ -1,0 +1,60 @@
+@use 'var'
+
+// Flex Box Mixins
+@mixin flex-center()
+    display: flex
+    align-items: center
+    justify-content: center
+
+@mixin flex-box($x-axis, $y-axis, $direction: row, $wrap: wrap)
+    display: flex
+    @if $direction == row
+        align-items: $y-axis
+        justify-content: $x-axis
+    @else if $direction == column
+        align-items: $x-axis
+        justify-content: $y-axis
+        flex-direction: $direction
+
+// Grid Mixins
+@mixin grid-layout($grid-columns, $grid-rows, $gap: 0px)
+    display: grid
+    grid-template-columns: $grid-columns
+    grid-template-rows: $grid-rows
+    gap: $gap
+
+@mixin grid-row-start-end($start, $end)
+    grid-row-start: $start
+    grid-row-end: $end
+
+@mixin grid-column-start-end($start, $end)
+    grid-column-start: $start
+    grid-column-end: $end
+
+@mixin grid-gap($row-gap, $column-gap)
+    gap: $row-gap $column-gap
+
+// Buttons Styles
+@mixin button-def
+    min-height: 35px
+    min-width: 100px
+    margin: 0
+    padding: 5px 10px
+    border-radius: 5px
+    border: 1px solid var.$f-color
+    color: var.$f-color
+    background-color: transparent
+    font-size: 14px
+    cursor: pointer
+    transition: all .3s ease
+    &:hover
+        background-color: var.$f-color
+        color: black
+
+// Box Layout
+@mixin box-content($max-w)
+    max-width: $max-w
+    margin: 0 auto
+    @media screen and (max-width: 1100px)
+        max-width: none
+        width: 100%
