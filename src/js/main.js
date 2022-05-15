@@ -1,48 +1,49 @@
 let bodyHTML = document.querySelector('#root')
-let divHTML = document.createElement('div')
-let spanHTML = document.createElement('span')
-let pHTML = document.createElement('p')
-let buttonHTML = document.createElement('button')
-
-function createHTMLTag(element, sclass, id = undefined) {
-  let e = document.createElement(`${element}`)
-  e.classList.add(`${sclass}`)
-
-  if (id !== undefined) {
-    e.setAttribute('id', `${id}`)
-  } else {
-  }
-
-  return e
-}
+let tag
 
 // Header HTML
 let headerHTML = createHTMLTag('header', 'header-layout', 'header-id')
 bodyHTML.appendChild(headerHTML)
 
 let headerContent = document.getElementById('header-id')
-divHTML = createHTMLTag('div', 'h-content-s')
-headerContent.appendChild(divHTML)
+tag = createHTMLTag('div', 'h-content-s', 'hcontent')
+headerContent.appendChild(tag)
+
+{
+  // Header Content
+  let header = document.querySelector('#hcontent')
+  tag = createHTMLTag('div', 'hh-left')
+  header.appendChild(tag)
+  tag = createHTMLTag('div', 'hh-center')
+  header.appendChild(tag)
+  tag = createHTMLTag('div', 'hh-right')
+  header.appendChild(tag)
+
+  addClassInChildElements('othersh', header)
+}
 
 // Hidden Content Left
-divHTML = createHTMLTag('div', 'left-content-hidden')
-bodyHTML.appendChild(divHTML)
+tag = createHTMLTag('div', 'left-content-hidden')
+bodyHTML.appendChild(tag)
 
 // Container Page
-divHTML = createHTMLTag('div', 'container-s')
-bodyHTML.appendChild(divHTML)
+tag = createHTMLTag('div', 'container-s')
+bodyHTML.appendChild(tag)
 
 {
   // Content Container
-  const container = document.querySelector('.container-s')
-  divHTML = createHTMLTag('div', 'c-content-s', 'c-content-box')
-  container.appendChild(divHTML)
+  let container = document.querySelector('.container-s')
+  tag = createHTMLTag('div', 'c-content-s', 'c-content-box')
+  container.appendChild(tag)
+  let container2 = document.querySelector('#c-content-box')
+  createSeveralElements(13, 'div', 'cbox-card', container2)
 }
 
 // Hidden Content Right
-divHTML = createHTMLTag('div', 'right-content-hidden')
-bodyHTML.appendChild(divHTML)
+tag = createHTMLTag('div', 'right-content-hidden')
+bodyHTML.appendChild(tag)
 
 // Footer
-divHTML = createHTMLTag('footer', 'footer-s')
-bodyHTML.appendChild(divHTML)
+tag = createHTMLTag('footer', 'footer-s')
+bodyHTML.appendChild(tag)
+createSeveralElements(10, 'div', 'fftest', document.querySelector('.footer-s'))

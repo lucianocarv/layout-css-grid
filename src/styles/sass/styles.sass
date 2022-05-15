@@ -11,49 +11,94 @@ body
     font-size: 20px
 
 #root
-    background-color: black
+    background-color: var.$scolor
     height: auto
     width: 100%
 
     display: grid
-    grid-template-columns: auto auto auto
-    grid-template-rows: 150px 1fr 300px
-    grid-template-areas: 'header header header' 'left-content-hidden container right-content-hidden' 'footer footer footer'
+    gap: 5px
+    grid-template-columns: auto 1170px auto
+    grid-template-rows: 100px 1fr 300px
+    grid-template-areas: 'header header header''left-content-hidden container right-content-hidden''footer footer footer'
 
     @media screen and (max-width: 1180px)
         grid-template-columns: 1fr
-        grid-template-rows: 100px auto 200px
+        grid-template-rows: 100px auto 300px
         grid-template-areas: 'header''container''footer'
 
+///////////////////////////////////// HEADER ////////////////////////////////////////////////////////
 .header-layout
     grid-area: header
-    border: 10px solid yellow
 
 .h-content-s
-    background-color: var.$scolor
+    max-width: 1170px
+    height: 100%
+    margin: 0 auto
+    // background-color: var.$scolor
+    @include mixin.flex-box(space-between, center)
+    flex-wrap: wrap
+
+.othersh
+    min-width: calc( 95% / 3 )
+    height: 80px
+    @include mixin.SpotlightFirtsLevel
+
+///////////////////////////////////// CONTAINER ////////////////////////////////////////////////////
 
 .container-s
     grid-area: container
-    min-width: 1170px
-    min-height: 1000px
-    border: 10px solid white
-    @media screen and (max-width: 1180px)
+    height: 2000px
+    @include mixin.flex-box(center, flex-start)
+
+    @media screen and (max-width: 1220px)
         min-width: 100%
+
+.c-content-s
+    width: 1170px
+    @include mixin.SpotlightFirtsLevel
+    display: grid
+    justify-content: center
+    align-items: start
+    grid-template-columns: repeat(4, calc( 100% / 4 ))
+    @media screen and (max-width: 900px)
+        grid-template-columns: repeat(3, calc( 100% / 3 ))
+    @media screen and (max-width: 430px)
+        grid-template-columns: repeat(2, calc( 100% / 2 ))
+
+// ***** Cards *****
+.cbox-card
+    @include mixin.SpotlightSecondLevel
+    height: 350px
+
+.cbox-card:nth-child(1)
+    grid-column-end: span 4
+    @media screen and (max-width: 900px)
+        grid-column-end: span 3
+    @media screen and (max-width: 430px)
+        grid-column-end: span 2
+
+///////////////////////////////////// LEFT CONTENT /////////////////////////////////////////////////
 
 .left-content-hidden
     grid-area: left-content-hidden
-    border: 10px solid blue
-    @media screen and (max-width: 1180px)
+    padding: 10px
+    @include mixin.SpotlightFirtsLevel
+    @media screen and (max-width: 1220px)
         display: none
+
+///////////////////////////////////// RIGHT CONTENT ////////////////////////////////////////////////
 
 .right-content-hidden
     grid-area: right-content-hidden
-    border: 10px solid blue
-
-    @media screen and (max-width: 1180px)
+    padding: 10px
+    @include mixin.SpotlightFirtsLevel
+    @media screen and (max-width: 1220px)
         display: none
+
+///////////////////////////////////// FOOTER ///////////////////////////////////////////////////////
 
 .footer-s
     grid-area: footer
-    border: 10px solid orange
-    @media screen and (max-width: 1180px)
+    padding: 10px
+    @include mixin.SpotlightFirtsLevel
+    @media screen and (max-width: 1220px)

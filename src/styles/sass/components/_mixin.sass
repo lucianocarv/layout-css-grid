@@ -1,5 +1,16 @@
 @use 'var'
 
+// Test Mixins
+@mixin SpotlightFirtsLevel
+    border: 2px solid var.$spotcolor
+    border-radius: 10px
+@mixin SpotlightSecondLevel
+    border: 2px solid var.$spotcolor2
+    border-radius: 10px
+@mixin SpotlightThirdLevel
+    border: 2px solid var.$spotcolor3
+    border-radius: 10px
+
 // Flex Box Mixins
 @mixin flex-center()
     display: flex

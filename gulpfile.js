@@ -28,3 +28,13 @@ watcherJS.on(
       .pipe(dest('src/js/min'))
   }))
 )
+
+watcherJS.on(
+  'change',
+  (exports.default = parallel(function JS() {
+    return src('src/js/components/*.js')
+      .pipe(uglify())
+      .pipe(rename({ extname: '.min.js' }))
+      .pipe(dest('src/js/min'))
+  }))
+)
