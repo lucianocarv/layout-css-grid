@@ -4,42 +4,45 @@ let spanHTML = document.createElement('span')
 let pHTML = document.createElement('p')
 let buttonHTML = document.createElement('button')
 
-function createTAG(element, sclass, id = undefined) {
-  let elem = document.createElement(`${element}`)
-  elem.classList.add(`${sclass}`)
+function createHTMLTag(element, sclass, id = undefined) {
+  let e = document.createElement(`${element}`)
+  e.classList.add(`${sclass}`)
 
   if (id !== undefined) {
-    elem.setAttribute('id', `${id}`)
+    e.setAttribute('id', `${id}`)
   } else {
   }
 
-  return elem
+  return e
 }
 
 // Header HTML
-let headerHTML = createTAG('header', 'header-layout', 'header-id')
+let headerHTML = createHTMLTag('header', 'header-layout', 'header-id')
 bodyHTML.appendChild(headerHTML)
 
 let headerContent = document.getElementById('header-id')
-divHTML = createTAG('div', 'h-content-s')
+divHTML = createHTMLTag('div', 'h-content-s')
 headerContent.appendChild(divHTML)
 
 // Hidden Content Left
-divHTML = document.createElement('div')
-bodyHTML.appendChild(divHTML).classList.add('left-content-hidden')
+divHTML = createHTMLTag('div', 'left-content-hidden')
+bodyHTML.appendChild(divHTML)
 
 // Container Page
-divHTML = document.createElement('div')
-bodyHTML.appendChild(divHTML).classList.add('container-s')
+divHTML = createHTMLTag('div', 'container-s')
+bodyHTML.appendChild(divHTML)
 
-const container = document.querySelector('.container-s')
-divHTML = document.createElement('div')
-container.appendChild(divHTML).setAttribute('id', 'c-content-box')
+{
+  // Content Container
+  const container = document.querySelector('.container-s')
+  divHTML = createHTMLTag('div', 'c-content-s', 'c-content-box')
+  container.appendChild(divHTML)
+}
 
 // Hidden Content Right
-divHTML = document.createElement('div')
-bodyHTML.appendChild(divHTML).classList.add('right-content-hidden')
+divHTML = createHTMLTag('div', 'right-content-hidden')
+bodyHTML.appendChild(divHTML)
 
 // Footer
-divHTML = document.createElement('div')
-bodyHTML.appendChild(divHTML).classList.add('footer-s')
+divHTML = createHTMLTag('footer', 'footer-s')
+bodyHTML.appendChild(divHTML)
