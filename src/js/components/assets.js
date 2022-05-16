@@ -1,12 +1,12 @@
 // Functions
-function createHTMLTag(element, classname, id = undefined) {
+function createHTMLTag(element, classname, father, id = undefined) {
   let e = document.createElement(`${element}`)
   e.classList.add(`${classname}`)
   if (id !== undefined) {
     e.setAttribute('id', `${id}`)
   } else {
   }
-  return e
+  return father.appendChild(e)
 }
 
 function addClassInChildElements(classname, elements) {
@@ -25,4 +25,5 @@ const createSeveralElements = (amount, tag, classname, father) => {
   arrE.forEach((e) => {
     father.appendChild(e)
   })
+  console.log(arrE)
 }

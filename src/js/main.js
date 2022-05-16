@@ -1,49 +1,38 @@
 let bodyHTML = document.querySelector('#root')
-let tag
 
 // Header HTML
-let headerHTML = createHTMLTag('header', 'header-layout', 'header-id')
-bodyHTML.appendChild(headerHTML)
+createHTMLTag('header', 'header-layout', bodyHTML, 'header-id')
 
-let headerContent = document.getElementById('header-id')
-tag = createHTMLTag('div', 'h-content-s', 'hcontent')
-headerContent.appendChild(tag)
+let headerContent = document.querySelector('#header-id')
+createHTMLTag('div', 'h-content-s', headerContent, 'hcontent')
 
 {
   // Header Content
   let header = document.querySelector('#hcontent')
-  tag = createHTMLTag('div', 'hh-left')
-  header.appendChild(tag)
-  tag = createHTMLTag('div', 'hh-center')
-  header.appendChild(tag)
-  tag = createHTMLTag('div', 'hh-right')
-  header.appendChild(tag)
+  createHTMLTag('div', 'hh-left', header)
+  createHTMLTag('div', 'hh-center', header)
+  createHTMLTag('div', 'hh-right', header)
 
   addClassInChildElements('othersh', header)
 }
 
 // Hidden Content Left
-tag = createHTMLTag('div', 'left-content-hidden')
-bodyHTML.appendChild(tag)
+createHTMLTag('div', 'left-content-hidden', bodyHTML)
 
 // Container Page
-tag = createHTMLTag('div', 'container-s')
-bodyHTML.appendChild(tag)
+createHTMLTag('div', 'container-s', bodyHTML)
 
 {
   // Content Container
   let container = document.querySelector('.container-s')
-  tag = createHTMLTag('div', 'c-content-s', 'c-content-box')
-  container.appendChild(tag)
+  createHTMLTag('div', 'c-content-s', container, 'c-content-box')
   let container2 = document.querySelector('#c-content-box')
   createSeveralElements(13, 'div', 'cbox-card', container2)
 }
 
 // Hidden Content Right
-tag = createHTMLTag('div', 'right-content-hidden')
-bodyHTML.appendChild(tag)
+createHTMLTag('div', 'right-content-hidden', bodyHTML)
 
 // Footer
-tag = createHTMLTag('footer', 'footer-s')
-bodyHTML.appendChild(tag)
+createHTMLTag('footer', 'footer-s', bodyHTML)
 createSeveralElements(10, 'div', 'fftest', document.querySelector('.footer-s'))
