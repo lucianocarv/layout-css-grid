@@ -1,3 +1,31 @@
+.centeryx {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.adr {
+  font-size: 50px;
+  color: yellow;
+}
+
+.transition_a {
+  transition: all 0.3s ease;
+}
+
+.zoomS1:hover {
+  transform: translateX(10px);
+  cursor: pointer;
+}
+
+.zoomS2:hover {
+  background-color: #3b3b3b;
+}
+
+.zoomS1:selected {
+  color: orange;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -85,6 +113,7 @@ body {
   border: 2px solid blue;
   border-radius: 10px;
   height: 350px;
+  cursor: pointer;
 }
 
 .cbox-card:nth-child(1) {

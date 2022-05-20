@@ -13,7 +13,11 @@ createHTMLTag('div', 'h-content-s', headerContent, 'hcontent')
   createHTMLTag('div', 'hh-center', header)
   createHTMLTag('div', 'hh-right', header)
 
-  addClassInChildElements('othersh', header)
+  addClassInChildElements(header, ['othersh', 'centeryx'])
+
+  addAllChilds(header, 'bi-check-square-fill', 'i')
+  let adr = document.querySelectorAll('.adr')
+  addSimpleClassInElements(adr, ['transition_a', 'zoomS1'])
 }
 
 // Hidden Content Left
@@ -28,6 +32,11 @@ createHTMLTag('div', 'container-s', bodyHTML)
   createHTMLTag('div', 'c-content-s', container, 'c-content-box')
   let container2 = document.querySelector('#c-content-box')
   createSeveralElements(13, 'div', 'cbox-card', container2)
+
+  addSimpleClassInElements(document.querySelectorAll('.cbox-card'), [
+    'zoomS2',
+    'transition_a',
+  ])
 }
 
 // Hidden Content Right

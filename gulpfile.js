@@ -1,11 +1,11 @@
-const { src, dest, watch, parallel, symlink } = require('gulp')
+const { src, dest, watch, parallel, symlink, series } = require('gulp')
 const rename = require('gulp-rename')
 const uglify = require('gulp-uglify')
 const uglifycss = require('gulp-uglifycss')
-const watcher = watch(['src/styles/css/*.css'])
-const watcherJS = watch(['src/js/*.js'])
+const watcherCSS = watch(['src/styles/css/*.css'])
+let watcherJS = watch(['src/js/*.js'])
 
-watcher.on(
+watcherCSS.on(
   'change',
   (exports.default = parallel(function Css() {
     return src('src/styles/css/*.css')
@@ -21,7 +21,7 @@ watcher.on(
 
 watcherJS.on(
   'change',
-  (exports.default = parallel(function JS() {
+  (exports.default = series(function JS() {
     return src('src/js/*.js')
       .pipe(uglify())
       .pipe(rename({ extname: '.min.js' }))
@@ -29,9 +29,11 @@ watcherJS.on(
   }))
 )
 
+watcherJS = watch(['src/js/components/*.js'])
+
 watcherJS.on(
   'change',
-  (exports.default = parallel(function JS() {
+  (exports.default = series(function JS() {
     return src('src/js/components/*.js')
       .pipe(uglify())
       .pipe(rename({ extname: '.min.js' }))
